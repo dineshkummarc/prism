@@ -1,0 +1,17 @@
+name: Danger
+
+on: 
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  run:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Danger
+        run: npx danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
